@@ -1,4 +1,4 @@
-package org.example.abdospringdata;
+package abdospringdata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
