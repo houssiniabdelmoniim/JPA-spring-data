@@ -3,10 +3,7 @@ package abdospringdata.web;
 import abdospringdata.entities.Product;
 import abdospringdata.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,15 @@ public class ProductRestController {
     @GetMapping("/find/products")
     public List<Product> findProducts(@RequestParam(name = "kw", defaultValue = "") String kw){
         return productRepository.findByNameContains(kw);
+    }
+    @PostMapping("/products")
+    public Product save(@RequestBody Product product){
+        return productRepository.save(product);
+    }
+
+    @DeleteMapping("/products/{id}")
+    public void delete(@PathVariable Long id){
+        productRepository.deleteById(id);
     }
 
 }
